@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand palette */
+  --color-ink: #0A0A0A;
+  --color-paper: #FFFFFF;
+  --color-fog: #F5F5F5;
+  --color-mist: #9CA3AF;
+  --color-line: #E5E5E5;
+  --color-accent: #1E3A8A;
+
+  /* Type scale — generous, editorial */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Container */
+  --spacing-section: 8rem;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  ::selection {
+    background: var(--color-ink);
+    color: var(--color-paper);
+  }
+
+  /* Headings — tight tracking, confident */
+  h1, h2, h3, h4 {
+    letter-spacing: -0.02em;
+    font-weight: 500;
+  }
+
+  /* Tight nav links */
+  a {
+    text-decoration: none;
+  }
+}
+
+@layer utilities {
+  /* Standard page container — generous side padding */
+  .container-page {
+    width: 100%;
+    max-width: 80rem;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .container-page {
+      padding-inline: 2.5rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .container-page {
+      padding-inline: 3.5rem;
+    }
+  }
+
+  /* Hairline divider in brand line color */
+  .hairline {
+    border-color: var(--color-line);
+  }
+
+  /* Subtle, slow rise-in for sections */
+  .rise {
+    animation: rise 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Quiet underline-on-hover for inline links */
+  .link-quiet {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size 350ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .link-quiet:hover {
+    background-size: 100% 1px;
+  }
+}
