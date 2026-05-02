@@ -17,11 +17,11 @@ export const images = {
   // Industry / work tiles
   property: u("photo-1518780664697-55e3ad937233", 1400),
   construction: u("photo-1486325212027-8081e485255e", 1400),
-  film: u("photo-1465056836041-7f43ac27dcb5", 1400),
+  film: u("photo-1572816703269-bccda14a887b", 1400), // Blue Ridge Parkway — winding road / switchback
   events: u("photo-1519225421980-715cb0215aed", 1400),
   coastal: u("photo-1505761671935-60b3a7427bad", 1400),
   forest: u("photo-1448375240586-882707db888b", 1400),
-  city: u("photo-1485081669829-bacb8c7bb1f3", 1400),
+  city: u("photo-1660585238415-517de72185d5", 1400), // Charlotte, NC skyline
   solar: u("photo-1509391366360-2e959784a276", 1400),
 };
 

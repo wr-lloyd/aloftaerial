@@ -81,6 +81,38 @@ export default async function IndustryDetailPage({
         </div>
       </section>
 
+      {/* WHY AERIAL — sector-specific benefits, slotted before services */}
+      <section className="border-b border-[var(--color-line)]">
+        <div className="container-page py-20 md:py-28">
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-12">
+            <div className="md:col-span-4">
+              <Eyebrow>Why aerial</Eyebrow>
+              <h2 className="mt-6 text-[28px] leading-[1.1] tracking-tight md:text-[40px]">
+                {ind.whyHeading}
+              </h2>
+            </div>
+            <div className="md:col-span-8">
+              <ul className="divide-y divide-[var(--color-line)] border-y border-[var(--color-line)]">
+                {ind.whyPoints.map((point, idx) => (
+                  <li
+                    key={idx}
+                    className="flex items-baseline gap-6 py-5"
+                  >
+                    <span className="font-mono text-[12px] text-[var(--color-ink)]/40">
+                      {String(idx + 1).padStart(2, "0")}
+                    </span>
+                    <p
+                      className="text-[16px] leading-relaxed text-[var(--color-ink)]/85 md:text-[17px]"
+                      dangerouslySetInnerHTML={{ __html: point }}
+                    />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* SERVICES TYPICALLY USED */}
       <section className="border-b border-[var(--color-line)]">
         <div className="container-page py-20 md:py-28">
