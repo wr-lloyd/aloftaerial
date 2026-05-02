@@ -35,18 +35,18 @@ export default function ContactPage() {
                   hello@aloftaerial.com
                 </a>
                 <a
-                  href="tel:+12065550199"
+                  href="tel:+12096411840"
                   className="mt-2 block text-[16px] text-[var(--color-ink)]/65 link-quiet"
                 >
-                  +1 (206) 555 0199
+                  209.641.1840
                 </a>
               </div>
 
               <div>
                 <Eyebrow>Coverage</Eyebrow>
                 <p className="mt-4 text-[16px] leading-relaxed text-[var(--color-ink)]/70">
-                  Pacific Northwest based — flying nationwide for film,
-                  commercial, and large-scale survey work.
+                  Greater RDU Area, North Carolina — flying nationwide for
+                  film, commercial, and large-scale survey work.
                 </p>
               </div>
 

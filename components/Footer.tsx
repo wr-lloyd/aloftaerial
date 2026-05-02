@@ -14,17 +14,20 @@ const cols: { title: string; links: { href: string; label: string }[] }[] = [
   {
     title: "Industries",
     links: [
-      { href: "/services#property", label: "Property & real estate" },
-      { href: "/services#construction", label: "Construction" },
-      { href: "/services#film", label: "Film & commercial" },
-      { href: "/services#events", label: "Events & weddings" },
+      { href: "/industries/property", label: "Property & real estate" },
+      { href: "/industries/construction-survey", label: "Construction & survey" },
+      { href: "/industries/film-commercial", label: "Film & commercial" },
+      { href: "/industries/events-weddings", label: "Events & weddings" },
+      { href: "/industries/inspection", label: "Inspection imagery" },
+      { href: "/industries/brand-creator", label: "Brand & creator" },
     ],
   },
   {
     title: "Studio",
     links: [
       { href: "/about", label: "About" },
-      { href: "/work", label: "Work" },
+      { href: "/portfolio", label: "Portfolio" },
+      { href: "/locations/raleigh-durham", label: "Raleigh-Durham" },
       { href: "/contact", label: "Contact" },
     ],
   },

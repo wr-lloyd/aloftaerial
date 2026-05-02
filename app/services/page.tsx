@@ -80,31 +80,31 @@ const industries = [
       "Listings, twilight, lifestyle. Calibrated for MLS, brochure, and social.",
   },
   {
-    id: "construction",
+    id: "construction-survey",
     title: "Construction & survey",
     body:
       "Monthly progress capture, ortho, volumetrics, and as-built data.",
   },
   {
-    id: "film",
+    id: "film-commercial",
     title: "Film & commercial",
     body:
       "Cinematic aerial work integrated with your DP, editor, and colourist.",
   },
   {
-    id: "events",
+    id: "events-weddings",
     title: "Events & weddings",
     body:
       "Quiet, considered context — never intrusive. Family-first delivery.",
   },
   {
-    id: "inspection-industry",
+    id: "inspection",
     title: "Inspection & infrastructure",
     body:
       "Visual data captured to your inspectors’ specification. We capture; you assess.",
   },
   {
-    id: "creator",
+    id: "brand-creator",
     title: "Brand & creator content",
     body:
       "Scroll-ready stills and short-form video that earn a second look.",
@@ -213,13 +213,22 @@ export default function ServicesPage() {
             <div className="md:col-span-8">
               <ul className="grid grid-cols-1 gap-px overflow-hidden rounded-[2px] bg-[var(--color-line)] sm:grid-cols-2">
                 {industries.map((i) => (
-                  <li key={i.id} id={i.id} className="bg-white p-8">
-                    <div className="text-[18px] tracking-tight md:text-[20px]">
-                      {i.title}
-                    </div>
-                    <p className="mt-3 text-[14px] leading-relaxed text-[var(--color-ink)]/65">
-                      {i.body}
-                    </p>
+                  <li key={i.id} id={i.id} className="bg-white">
+                    <Link
+                      href={`/industries/${i.id}`}
+                      className="group block p-8 transition-colors"
+                    >
+                      <div className="text-[18px] tracking-tight md:text-[20px] link-quiet">
+                        {i.title}
+                      </div>
+                      <p className="mt-3 text-[14px] leading-relaxed text-[var(--color-ink)]/65">
+                        {i.body}
+                      </p>
+                      <span className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-medium text-[var(--color-ink)]">
+                        Open sector
+                        <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5">→</span>
+                      </span>
+                    </Link>
                   </li>
                 ))}
               </ul>

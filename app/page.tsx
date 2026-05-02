@@ -27,22 +27,22 @@ const capabilities = [
   },
 ];
 
-const industries = [
-  { name: "Property & real estate", note: "Listings, twilight, lifestyle." },
-  { name: "Construction & survey", note: "Progress capture, ortho, volumetrics." },
-  { name: "Film & commercial", note: "Story-led aerial cinematography." },
-  { name: "Events & weddings", note: "Timeless context, never intrusive." },
-  { name: "Inspection imagery", note: "Roofs, solar, façades, infrastructure." },
-  { name: "Brand & creator content", note: "Scroll-ready stills and short-form video." },
+const homeIndustries = [
+  { slug: "property", name: "Property & real estate", note: "Listings, twilight, lifestyle." },
+  { slug: "construction-survey", name: "Construction & survey", note: "Progress capture, ortho, volumetrics." },
+  { slug: "film-commercial", name: "Film & commercial", note: "Story-led aerial cinematography." },
+  { slug: "events-weddings", name: "Events & weddings", note: "Timeless context, never intrusive." },
+  { slug: "inspection", name: "Inspection imagery", note: "Roofs, solar, façades, infrastructure." },
+  { slug: "brand-creator", name: "Brand & creator content", note: "Scroll-ready stills and short-form video." },
 ];
 
 const work = [
-  { title: "Coastal residence", meta: "Property · Stills + 4K", img: images.coastal, ratio: "aspect-[4/5]" },
-  { title: "Mid-rise progress capture", meta: "Construction · Monthly", img: images.construction, ratio: "aspect-[4/3]" },
-  { title: "Estate listing", meta: "Property · Twilight", img: images.property, ratio: "aspect-[4/3]" },
-  { title: "Solar array survey", meta: "Inspection · Ortho", img: images.solar, ratio: "aspect-[4/5]" },
-  { title: "Vineyard wedding", meta: "Events · Cinematic", img: images.events, ratio: "aspect-[4/5]" },
-  { title: "Switchback drive", meta: "Commercial · 6K", img: images.film, ratio: "aspect-[4/3]" },
+  { slug: "outer-banks-residence", title: "Coastal residence", meta: "Property · Stills + 4K", img: images.coastal, ratio: "aspect-[4/5]" },
+  { slug: "downtown-raleigh-mid-rise", title: "Mid-rise progress capture", meta: "Construction · Monthly", img: images.construction, ratio: "aspect-[4/3]" },
+  { slug: "maple-ridge-estate", title: "Estate listing", meta: "Property · Twilight", img: images.property, ratio: "aspect-[4/3]" },
+  { slug: "wilson-county-solar", title: "Solar array survey", meta: "Inspection · Ortho", img: images.solar, ratio: "aspect-[4/5]" },
+  { slug: "yadkin-valley-wedding", title: "Vineyard wedding", meta: "Events · Cinematic", img: images.events, ratio: "aspect-[4/5]" },
+  { slug: "blue-ridge-switchback", title: "Switchback drive", meta: "Commercial · 6K", img: images.film, ratio: "aspect-[4/3]" },
 ];
 
 export default function Home() {
@@ -91,7 +91,7 @@ export default function Home() {
                   </p>
                   <div className="md:col-span-5 md:flex md:items-end md:justify-end">
                     <div className="flex items-center gap-8">
-                      <ArrowLink href="/work" className="!text-white">See our work</ArrowLink>
+                      <ArrowLink href="/portfolio" className="!text-white">See our portfolio</ArrowLink>
                       <Link
                         href="/contact"
                         className="text-[14px] font-medium text-white/65 hover:text-white transition-colors link-quiet"
@@ -152,20 +152,25 @@ export default function Home() {
             </div>
             <div className="md:col-span-8">
               <ul className="divide-y divide-[var(--color-line)] border-y border-[var(--color-line)]">
-                {industries.map((i) => (
-                  <li
-                    key={i.name}
-                    className="flex items-baseline justify-between gap-6 py-6"
-                  >
-                    <span className="text-[20px] tracking-tight md:text-[24px]">
-                      {i.name}
-                    </span>
-                    <span className="text-right text-[14px] text-[var(--color-ink)]/55 md:text-[15px]">
-                      {i.note}
-                    </span>
+                {homeIndustries.map((i) => (
+                  <li key={i.slug}>
+                    <Link
+                      href={`/industries/${i.slug}`}
+                      className="group flex items-baseline justify-between gap-6 py-6 transition-colors"
+                    >
+                      <span className="text-[20px] tracking-tight md:text-[24px] link-quiet">
+                        {i.name}
+                      </span>
+                      <span className="text-right text-[14px] text-[var(--color-ink)]/55 md:text-[15px]">
+                        {i.note}
+                      </span>
+                    </Link>
                   </li>
                 ))}
               </ul>
+              <div className="mt-8">
+                <ArrowLink href="/industries">All industries</ArrowLink>
+              </div>
             </div>
           </div>
         </div>
@@ -181,16 +186,17 @@ export default function Home() {
                 Selected projects.
               </h2>
             </div>
-            <ArrowLink href="/work" className="hidden md:inline-flex">
+            <ArrowLink href="/portfolio" className="hidden md:inline-flex">
               View all
             </ArrowLink>
           </div>
 
           <div className="mt-16 grid grid-cols-1 gap-x-6 gap-y-16 md:grid-cols-12">
             {work.map((w, idx) => (
-              <figure
+              <Link
                 key={w.title}
-                className={`md:col-span-6 ${idx % 3 === 0 ? "md:col-span-7" : idx % 3 === 1 ? "md:col-span-5" : "md:col-span-12"}`}
+                href={`/portfolio/${w.slug}`}
+                className={`group block md:col-span-6 ${idx % 3 === 0 ? "md:col-span-7" : idx % 3 === 1 ? "md:col-span-5" : "md:col-span-12"}`}
               >
                 <div className={`relative ${w.ratio} overflow-hidden rounded-[2px] bg-[var(--color-fog)]`}>
                   <Image
@@ -198,19 +204,19 @@ export default function Home() {
                     alt={w.title}
                     fill
                     sizes="(min-width: 1024px) 50vw, 100vw"
-                    className="object-cover transition-transform duration-700 hover:scale-[1.02]"
+                    className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
                   />
                 </div>
-                <figcaption className="mt-4 flex items-center justify-between text-[14px]">
+                <div className="mt-4 flex items-center justify-between text-[14px]">
                   <span className="text-[var(--color-ink)] tracking-tight">{w.title}</span>
                   <span className="text-[var(--color-ink)]/55">{w.meta}</span>
-                </figcaption>
-              </figure>
+                </div>
+              </Link>
             ))}
           </div>
 
           <div className="mt-12 md:hidden">
-            <ArrowLink href="/work">View all work</ArrowLink>
+            <ArrowLink href="/portfolio">View all work</ArrowLink>
           </div>
         </div>
       </section>
